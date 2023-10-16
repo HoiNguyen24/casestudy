@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #Caculator-table {
+            border-collapse: collapse;
+            width: 400px;
+            height: 300px;
+            background-color: grey;
+            margin: 0 auto;
+        }
+        #Caculator-table td, #Caculator-table th {
+            border: 1px solid grey;
+            height: 40px;
+            width:  50px;
+        }
+        .Cell{
+            width:50px;
+            height:40px;
+        }
+        #Display-Caculator {
+            width: 385px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<table id="Caculator-table">
+    <tr>
+        <td colspan="7"><input id="Display-Caculator"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button value="(" id="1" class="Cell" onclick="elementtinputt()">(</button></td>
+        <td><button value=")" id="2"class="Cell" onclick="elementtinputt()">)</button></td>
+        <td><button value="%" id="3" class="Cell" onclick="elementtinputt()">%</button></td>
+        <td><button onlick="ResetDisplay()"  class="Cell" >AC</button></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button value="7" id="4" class="Cell" onclick="elementtinputt()">7</button></td>
+        <td><button value="8" id="5" class="Cell" onclick="elementtinputt()">8</button></td>
+        <td><button value="9" id="6" class="Cell" onclick="elementtinputt()">9</button></td>
+        <td><button value="/" id="7" class="Cell" onclick="elementtinputt()">/</button></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button value="4" id="8" class="Cell" onclick="elementtinputt()">4</button></td>
+        <td><button value="5" id="9" class="Cell" onclick="elementtinputt()">5</button></td>
+        <td><button value="6" id="10" class="Cell" onclick="elementtinputt()">6</button></td>
+        <td><button value="*" id="11" class="Cell" onclick="elementtinputt()">x</button></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button value="1" id="12" class="Cell" onclick="elementtinputt(12)">1</button></td>
+        <td><button value="2" id="13" class="Cell" onclick="elementtinputt(13)">2</button></td>
+        <td><button value="3" id="14" class="Cell" onclick="elementtinputt(14)">3</button></td>
+        <td><button value="-" id="15" class="Cell" onclick="elementtinputt(15)">-</button></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button value="0" id="16"class="Cell" onclick="elementtinputt(16)">0</button></td>
+        <td><button value="." id="17" class="Cell" onclick="elementtinputt(17)">.</button></td>
+        <td><button onlick="Solve()" class="Cell" onclick="caculating()">=</button></td>
+        <td><button value="+" id="18" class="Cell" onclick="elementtinputt(18)">+</button></td>
+    </tr>
+
+</table>
+</body>
+</html>
+<script src="googlecaculatorjs.js"></script>

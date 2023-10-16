@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    #display tr,td {
+      padding: 5px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      position: relative;
+      width: 400px;
+      margin: 0 auto;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .modal-content {
+      position: relative;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 0;
+      border: 1px solid #888;
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+      animation-name: animatetop;
+      animation-duration: 0.4s
+    }
+  </style>
+</head>
+<body>
+<div>
+  <label for="input" style="font-size: 20px;">Add New product<br></label>
+  <input type="text" placeholder="New product" id="input">
+  <button type="submit" onclick="add()">Add</button>
+</div>
+<div>
+  <h2>Display All Product</h2>
+  <h3>Product name </h3>
+  <div id="product-table">
+    <table id="display">
+
+    </table>
+  </div>
+</div>
+<form>
+  <div id="myModal" class="modal">
+
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="display-renew"></p>
+      <input type="text" id="rename" placeholder="rename product">
+      <div>
+        <button type="button" id="submitnew" onclick="addnew(this.value)">Submit</button>
+      </div>
+    </div>
+
+  </div>
+</form>
+</body>
+</html>
+<script>
+  let product = [];
+  let displayproduct = "";
+function add() {
+
+   displayproduct = "";
+   let x = document.getElementById("input").value;
+   product.push(x);
+   for (let i = 0; i < product.length; i++) {
+     displayproduct += "<tr><td>" + product[i] + "</td>" +"<td><button type='submit'  onclick='edit(this.value)' value="+ i +" >edit</button></td>"+"<td><button type='submit' onclick='re()' id="+ i +">delete</button></td>"+"</tr>";
+   }
+   document.getElementById("display").innerHTML = displayproduct;
+   input.value = "";
+
+
+ }
+  var modal = document.getElementById("myModal");
+  function edit(a){
+    modal.style.display = "block";
+    document.getElementById("display-renew").innerHTML = "rename product number " + a;
+    submitnew.value = a;
+
+  }
+ function addnew(a){
+    a = parseInt(a);
+   displayproduct ="";
+   product[a] = document.getElementById("rename").value;
+   for(var i=0; i<product.length; i++){
+     displayproduct += "<tr><td>" + product[i] + "</td>" +"<td><button type='submit'  onclick='edit(this.value)' value="+ i +" >edit</button></td>"+"<td><button type='submit' onclick='re(this.value)' id="+ i +">delete</button></td>"+"</tr>";
+   }
+   document.getElementById("display").innerHTML = displayproduct;
+ }
+
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function(){
+    modal.style.display = "none";
+  }
+  function re(a){
+    displayproduct = ""
+    for(var i=a+1; i< product.length ; i++){
+      product[i-1] = product[i];
+    }
+    console.log(product);
+    product.pop();
+    for (let i =0; i < product.length; i++) displayproduct += "<tr><td>" + product[i] + "</td>" + "<td><button type='submit'  onclick='edit(this.value)' value=" + i + " >edit</button></td>" + "<td><button type='submit' onclick='re()' id=" + i + ">delete</button></td>" + "</tr>";
+    document.getElementById("display").innerHTML = displayproduct;
+  }
+</script>

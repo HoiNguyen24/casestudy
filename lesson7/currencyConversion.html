@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      #Convert {
+          font-size: 20px;
+          width: 600px;
+          text-align: center;
+      }
+      #lower-line {
+          font-size: 30px;
+      }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+     <table id="Convert">
+        <tr>
+            <td>Amount</td>
+            <td>From Curency</td>
+            <td>To Curency</td>
+
+        </tr>
+         <tr id="lower-line">
+            <td><input type="text" id="MoneyConVert"></td>
+            <td>
+                <select name="To" id="To" style="width: 130px">
+                <option value="VietNam">VietNam</option>
+                <option value="USA">USA</option>
+            </select>
+            </td>
+            <td>
+                <select name="FR" id="FR" style="width: 130px">
+                    <option value="VietNam">VietNam</option>
+                    <option value="USA">USA</option>
+                </select>
+            </td>
+             <td><button type="button" onclick="ChangeMoney()" style="width: 130px">Convert</button></td>
+         </tr>
+    </table>
+
+</form>
+</body>
+</html>
+<script>
+
+ function ChangeMoney() {
+    let money = document.getElementById("MoneyConVert").value ;
+    let To = document.getElementById("To").value ;
+    let FR = document.getElementById("FR").value ;
+    if ( FR == "VietNam" && To =="USA")  {
+        let final = money*23000;
+        document.write(final);
+    }
+    else if( FR == "USA" && To =="VietNam") {
+        let final = money/23000;
+        document.write(final);
+    }
+    else {
+        document.write(money);
+    }
+
+ }
+</script>

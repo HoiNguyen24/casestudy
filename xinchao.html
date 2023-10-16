@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button type="button" onclick="showMessenger()">Click On Me!</button>
+    <button type="button" onclick="showMessenger1()">Click On Me!</button>
+    <button type="button" onclick="showMessenger2()" id="getelement">Click On Me!</button>
+    <button type="button" onclick="showMessenger3()">Click On Me!</button>
+</body>
+</html>
+<script>
+    function showMessenger() {
+        alert('Xin chao!');
+    }
+    function showMessenger1() {
+        console.log('Xin chao!');
+    }
+    function showMessenger2() {
+        document.getElementById("getelement").innerHTML="Xin chao!";
+    }
+    function showMessenger3() {
+        document.write("Xin chao!");
+    }
+</script>
