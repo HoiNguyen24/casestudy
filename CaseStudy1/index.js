@@ -16,6 +16,7 @@ class object1 {
     frame;
     y_vertical;
     radius;
+    hp;
     constructor(){
         this.speed = 10;
         this.x = 40;
@@ -26,9 +27,10 @@ class object1 {
         this.frame = 0;
         this.y_vertical = 75;
         this.radius = 15;
+        this.hp = 10;
     }
     draw() {
-        ctx.drawImage(run,this.x + this.X*128,this.y,this.width,this.height,80,canvas.height-this.y_vertical,this.width,this.height);
+        ctx.drawImage(run,this.x + this.X*128,this.y,this.width,this.height,80,canvas.height-this.y_vertical+5,this.width,this.height);
     }
     check(){
         if(gameFrame % 8 == 0 ){

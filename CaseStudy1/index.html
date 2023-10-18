@@ -8,31 +8,78 @@
              border: 1px solid black;
          }
          #checking_score{
-             border: 1px solid black;
+             width: 1000px;
              text-align: center;
-             color: red;
+             color: red ;
+             font-size: 30px;
+             border: 1px solid black;
+             background-color:#92B9E3;
          }
          .myModal {
              display: none;
              border: 1px solid black;
-             background-color: blue;
+             width:600px;
+             height:250px;
+             background-color: #FFC4A4;
              text-align: center;
-             color: red;
+             color: #92B9E3;
+             position: fixed;
+             margin-left: 200px;
          }
-
+         .myModal1 {
+             display: none;
+             border: 1px solid black;
+             width:1000px;
+             height:300px;
+             background-color: #FFC4A4;
+             text-align: center;
+             color: #92B9E3;
+             font-size: 20px;
+             position: fixed;
+             line-height: 10px;
+         }
+         .button{
+             border: 4px solid #6C7EE1;
+             border-radius: 20% 20% 20% 20%;
+             size: 12px;
+             height: 60px;
+             width: 120px;
+             font-size: 30px;
+         }
+         .pointOver{
+             font-size: 30px;
+         }
      </style>
 
 
 
 </head>
-<body>
+<body class="body">
   <h2 id="checking_score"></h2>
-  <div class="myModal"></div>
+  <div class="myModal" id="myModal">
+   <div>
+       <p class="pointOver" id="point"></p>
+       <p class="pointOver" id="heightScore"><p>
+       <button onclick="Restart();" class="button">Restart</button>
+   </div>
+  </div>
+  <div class="myModal1" id="myModal1">
+      <div>
+          <div>
+              <p>Tên chỉ bắn chết khi trúng đầu</p> <br>
+              <p>Tên trúng chân sẽ làm chậm tốc độ lên xuống, có thể ăn máu để tăng lại tốc độ lên xuống</p>
+          </div>
+          <image src="Run.png"></image>
+          <div>
+              <button onclick="createStart();" class="button">Start</button>
+          </div>
+      </div>
+  </div>
   <canvas id="myCanvas"></canvas>
-
+  <script src="index.js"></script>
+  <script src="Point.js"></script>
+  <script src="chungngaivat.js"></script>
+  <script src="main.js"></script>
 </body>
-<script src="index.js"></script>
-<script src="Point.js"></script>
-<script src="chungngaivat.js"></script>
-<script src="main.js"></script>
+
 </html>

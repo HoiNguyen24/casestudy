@@ -1,5 +1,6 @@
 var cnvArray = [];
-
+let arrow = new Image();
+arrow.src = 'arrow.png';
 class cnv {
     x;
     y;
@@ -9,25 +10,27 @@ class cnv {
     constructor() {
         this.x = canvas.width;
         this.y = Math.floor(Math.random() * 6) * 30;
-        this.radius = 20 * Math.sqrt(2);
-        this.speed = 5;
+        this.radius = 5;
+        this.speed = 3;
         this.width = 40;
         this.height = 40;
     }
 
     draw() {
-        ctx.fillStyle = 'black';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(arrow,140,200,300,130,this.x, this.y, 30, 13);
     }
     check(){
         this.x -= this.speed;
         let distanceX = this.x - 80;
         let distanceY = this.y - (canvas.height - player.y_vertical);
-        this.distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-        if(this.distance < this.radius+ player.radius){
+        this.distancehead = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        if(this.distancehead < this.radius+ player.radius) {
+            player.hp = 0;
             gameOver = true;
-            const point = gameScore;
         }
+        let distancex = this.x - 80;
+        let distancey = this.y - (canvas.height - player.y_vertical + player.height);
+        this.distancefoot = Math.sqrt(distancex * distancex + distancey * distancey);
     }
 }
 function createcnv() {
@@ -41,6 +44,11 @@ function createcnv() {
             cnvArray.splice(i, 1);
             i--;
         }
-    }
+        else if(cnvArray[i].distancefoot < cnvArray[i].radius + player.radius + 30){
+            player.hp -= 3;
+            cnvArray.splice(i, 1);
+            i--;
+        }
 
+    }
 }
