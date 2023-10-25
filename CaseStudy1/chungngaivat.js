@@ -6,7 +6,6 @@ class cnv {
     y;
     width;
     height;
-
     constructor() {
         this.x = canvas.width;
         this.y = Math.floor(Math.random() * 6) * 30;
@@ -24,18 +23,23 @@ class cnv {
         let distanceX = this.x - 80;
         let distanceY = this.y - (canvas.height - player.y_vertical);
         this.distancehead = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-        if(this.distancehead < this.radius+ player.radius) {
-            player.hp = 0;
-            gameOver = true;
-        }
         let distancex = this.x - 80;
         let distancey = this.y - (canvas.height - player.y_vertical + player.height);
         this.distancefoot = Math.sqrt(distancex * distancex + distancey * distancey);
+        let distancexx = this.x -80;
+        let distanceyy = this.y - (canvas.height - player.y_vertical + player.height* 1/2);
+        this.distancebody = Math.sqrt(distancexx**2 + distanceyy**2);
     }
 }
+let timeline  = 130;
+let i = 1;
 function createcnv() {
-    if (gameFrame % 130 == 0) {
-        cnvArray.push(new cnv(  ));
+    if (gameScore > 10 * i && timeline > 70) {
+        timeline -= 20;
+        i++;
+    }
+    if (gameFrame % timeline == 0) {
+        cnvArray.push(new cnv());
     }
     for (let i = 0; i < cnvArray.length; i++) {
         cnvArray[i].check();
@@ -44,11 +48,37 @@ function createcnv() {
             cnvArray.splice(i, 1);
             i--;
         }
-        else if(cnvArray[i].distancefoot < cnvArray[i].radius + player.radius + 30){
+        else if(cnvArray[i].distancebody < cnvArray[i].radius + player.radius+5){
             player.hp -= 3;
+            if (shield1.statusShield == true) {
+                player.hp += 3;
+                shield1.statusShield = false;
+                shield1.radius = 0;
+            }
             cnvArray.splice(i, 1);
             i--;
         }
-
+        else if (cnvArray[i].distancefoot < cnvArray[i].radius + player.radius-10) {
+            player.hp -= 3;
+            if (shield1.statusShield == true) {
+                player.hp += 3;
+                shield1.statusShield = false;
+                shield1.radius = 0;
+            }
+            cnvArray.splice(i, 1);
+            i--;
+        } else if (cnvArray[i].distancehead < cnvArray[i].radius + player.radius + shield1.radius - 5) {
+            if (shield1.statusShield == true) {
+                shield1.statusShield = false;
+                shield1.radius = 0;
+                cnvArray.splice(i, 1);
+                i--;
+            } else {
+                gameOver = true;
+                player.hp = 0;
+                cnvArray.splice(i, 1);
+                i--;
+            }
+        }
     }
 }

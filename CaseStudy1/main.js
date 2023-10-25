@@ -2,16 +2,23 @@ let Die = new Image();
 Die.src = "Dead.png";
 let map = new Image();
 map.src = "map.jpg";
+let shield1 = new shield();
+function createShield(){
+    shield1.check();
+    if(shield1.statusShield == true){
+        shield1.draw();
+    }
+}
 function  createPlayer(){
     player.draw();
     player.check();
 }
 function createHP(){
     ctx.font = '25px Arial';
-    ctx.fillText(player.hp,0,30);
-    ctx.strokeRect(30,5,300,30);
+    ctx.fillText("HP: " + player.hp,0,30);
+    ctx.strokeRect(80,5,300,30);
     ctx.fillStyle = 'red';
-    ctx.fillRect(30,5,player.hp*30,30);
+    ctx.fillRect(80,5,player.hp*30,30);
 }
 let Deadx = 40;
 let deadframde = 0;
@@ -22,23 +29,27 @@ function CreateGameOver(){
         modal.style.display = "block";
         document.getElementById("checking_score").innerHTML = "GAME OVER!";
         document.getElementById("point").innerText = "Point: " +gameScore;
-        document.getElementById("heightScore").innerText = "Heightest Score: " + height_score;
+        document.getElementById("heightScore").innerText = "Highest Score: " + height_score;
     }
-
 }
 let mapFrame = 0;
 let mapX = 0;
 function createmap(){
-    if(gameFrame % 10 == 0){
-           mapFrame++;
-           if(mapFrame > 3)
-               mapFrame = 0;
-           if(mapFrame == 3)
-               mapX = 0;
-           else
-               mapX++;
+    if(gameOver == false){
+        if(gameFrame % 10 == 0){
+            mapFrame++;
+            if(mapFrame > 3)
+                mapFrame = 0;
+            if(mapFrame == 3)
+                mapX = 0;
+            else
+                mapX++;
+        }
+        ctx.drawImage(map,300-mapX*100,527,700,300,0,0,1000,400);
     }
-    ctx.drawImage(map,300-mapX*100,527,700,300,0,0,1000,400);
+    else{
+        ctx.drawImage(map,300-mapX*100,527,700,300,0,0,1000,400);
+    }
 }
 function Restart(){
     modal.style.display = "none";
@@ -69,7 +80,7 @@ function createPlayerdead(){
 let count = 1;
 let modal1 = document.getElementById("myModal1");
 function createStart(){
-    document.getElementById("checking_score").innerHTML = "Point: " + gameScore + " Height score: " + height_score;
+    document.getElementById("checking_score").innerHTML = "Point: " + gameScore + " High score: " + height_score;
     modal1.style.display = "none";
     Status = true;
     console.log(Status);
@@ -78,21 +89,19 @@ function createStart(){
 function Play(){
     if(player.hp == 0) gameOver = true;
     if(Status == false){
-        document.getElementById("checking_score").innerHTML = "Vampire Run";
+        document.getElementById("checking_score").innerHTML = "Yah";
         modal1.style.display = "block";
     }
     else {
         if (!gameOver) {
             player.delete();
-            console.log(player.hp);
             createmap();
             createHP();
             createcnv();
+            createShield();
             createPlayer();
             createPoint();
-            console.log(player.speed);
             gameFrame++;
-            console.log(player.speed);
             requestAnimationFrame(Play);
         } else {
             player.delete();

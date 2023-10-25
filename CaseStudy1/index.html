@@ -5,19 +5,20 @@
     <title>Title</title>
      <style>
          #myCanvas{
-             border: 1px solid black;
+             border: 2px solid black;
          }
          #checking_score{
              width: 1000px;
              text-align: center;
              color: red ;
              font-size: 30px;
-             border: 1px solid black;
+             border: 2px solid black;
              background-color:#92B9E3;
          }
          .myModal {
+             margin-top: 30px;
              display: none;
-             border: 1px solid black;
+             border: 2px solid red;
              width:600px;
              height:250px;
              background-color: #FFC4A4;
@@ -41,6 +42,7 @@
          .button{
              border: 4px solid #6C7EE1;
              border-radius: 20% 20% 20% 20%;
+             margin-top: 30px;
              size: 12px;
              height: 60px;
              width: 120px;
@@ -51,11 +53,9 @@
          }
      </style>
 
-
-
 </head>
 <body class="body">
-  <h2 id="checking_score"></h2>
+<div id="checking_score"></div>
   <div class="myModal" id="myModal">
    <div>
        <p class="pointOver" id="point"></p>
@@ -65,11 +65,7 @@
   </div>
   <div class="myModal1" id="myModal1">
       <div>
-          <div>
-              <p>Tên chỉ bắn chết khi trúng đầu</p> <br>
-              <p>Tên trúng chân sẽ làm chậm tốc độ lên xuống, có thể ăn máu để tăng lại tốc độ lên xuống</p>
-          </div>
-          <image src="Run.png"></image>
+          <image src="Run.png" id="imagestart"></image>
           <div>
               <button onclick="createStart();" class="button">Start</button>
           </div>
@@ -78,8 +74,8 @@
   <canvas id="myCanvas"></canvas>
   <script src="index.js"></script>
   <script src="Point.js"></script>
+<script src="shield.js"></script>
   <script src="chungngaivat.js"></script>
   <script src="main.js"></script>
 </body>
-
 </html>

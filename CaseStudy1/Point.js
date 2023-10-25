@@ -56,9 +56,8 @@ function createPoint() {
             score();
         }
     }
-
 }
 function score(){
-    document.getElementById("checking_score").innerHTML = "Point : " + gameScore + " Height score : " + height_score;
+    document.getElementById("checking_score").innerHTML = "Point : " + gameScore + " High score : " + height_score;
 }
 score();
